@@ -1,5 +1,5 @@
 
-import Inicio from "../componentes/Inicio";
+import Inicio from "../telas/Inicio";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
