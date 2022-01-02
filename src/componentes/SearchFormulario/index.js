@@ -7,10 +7,6 @@ function SearchFormulario() {
 
     const [textoBusca, setTextoBusca] = useState("");
 
-    function limpaPesquisa() {
-        setTextoBusca("");
-    }
-
     return (
         <form 
             className="formulario-busca" 
