@@ -10,33 +10,38 @@
     --espacamento-inputs: clamp(5px, 0.9vw, 0.9vw);
 }
 
+
 .label-pesquisa {
     height: var(--tamanho-area-formulario);
     width: 95%;
     display: flex;
-    align-items: center;
-    border: 0.1vw solid rgb(78, 78, 78);
-    border-radius: 0.5em;
-    transition: all ease 0.1s;
+    justify-content: flex-end;
+    position: relative;
 }
 
-.label-pesquisa:hover,
-.label-pesquisa:focus,
-.label-pesquisa:active 
+#texto-pesquisa {
+    padding-right: calc(var(--tamanho-texto-formulario) * 3);
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    font-size: var(--tamanho-texto-formulario);
+    text-indent: var(--tamanho-texto-formulario);
+    position: absolute;
+    border: 0.1vw solid rgb(0, 0, 0);
+    border-radius: 0.5em;
+}
+
+#texto-pesquisa:hover,
+#texto-pesquisa:focus,
+#texto-pesquisa:active
 {
     background-color: rgb(207, 207, 207);
     border-color: rgb(158, 178, 187);
 }
 
-.formulario-busca input[type="text"] {
-    height: 80%;
-    width: 100%;
-    background-color: transparent;
-    font-size: var(--tamanho-texto-formulario);
-    text-indent: var(--tamanho-texto-formulario);
-}
 
 .limpa-busca {
+    z-index: 7;
     padding: calc(var(--tamanho-texto-formulario) / 2);
     font-size: calc(var(--tamanho-texto-formulario) * 1.5);
     display: flex;
