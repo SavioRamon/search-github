@@ -1,17 +1,36 @@
 
 import Inicio from "../telas/Inicio";
+import Repositorios from "../telas/Repositorios";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function Rotas () {
+const paths = {
+  home: {
+    label: "Home",
+    path: "/",
 
+    search: {
+      label: "Search",
+      path: "/search",
+
+      repositories: {
+        label: "Repositories",
+        path: "/search/repositories/:searchText"
+      }
+    }
+  }
+}
+
+
+export default function Rotas () {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={<Inicio />}>
+          <Routes>
+            <Route exact path={paths.home.path} element={ <Inicio /> } />
+            <Route path={paths.home.search.path} element={ <Inicio /> } />
 
-                </Route>
-            </Routes>
+            <Route path={paths.home.search.repositories.path} element={ <Repositorios /> } />
+          </Routes>
         </BrowserRouter>
     )
 }
