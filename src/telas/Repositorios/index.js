@@ -20,6 +20,20 @@ export default function Repositorios() {
     return (
       <section className="repositorios">
           
+        <ul className="lista-repositorios">
+
+          {repositorios &&
+            repositorios.items.map((item, key)=>{
+              return (
+                <li className="repositorio-item" key={key}>
+                  <h1>{item.name}</h1>
+              </li>  
+              )
+              
+            })
+          }
+            
+        </ul>
         
       </section>
     )
