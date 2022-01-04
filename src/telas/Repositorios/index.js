@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Creators as searchCreators } from "../../store/ducks/searchData";
 
 import { useParams } from "react-router-dom";
+import moment from "moment";
 
 
 export default function Repositorios() {
@@ -19,6 +20,11 @@ export default function Repositorios() {
     useEffect(()=>{
         dispatch(searchCreators.getRepositorios(searchText));
     }, []);
+
+
+    function ultimaAtualizacaoRepositorio(data){
+        return `Updated ${moment(data).fromNow()}`;
+    }
 
     return (
       <section className="repositorios">
@@ -52,7 +58,7 @@ export default function Repositorios() {
                   }
                 
                   <div className="informacoes-extras">
-                      <div className="estrelas info">
+                      <div className="info">
                           <div className="icone-info">
                               <BsStarFill />
                           </div>
@@ -60,7 +66,7 @@ export default function Repositorios() {
                       </div>
 
                       {item.language &&
-                        <div className="linguagem info">
+                        <div className="info">
                           <div className="icone-info">
                               <AiOutlineFile />
                           </div>
@@ -69,12 +75,18 @@ export default function Repositorios() {
                       }
 
                       {item.license &&
-                        <div className="licensa info">
+                        <div className="info">
                             {item.license.spdx_id} license
                         </div>
                       }
 
-                      
+                      <div className="info">
+                          <div>
+                              {ultimaAtualizacaoRepositorio(item.updated_at)}
+                          </div>
+                      </div>
+
+
                       
                   </div>
                   

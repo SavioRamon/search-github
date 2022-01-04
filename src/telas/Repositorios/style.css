@@ -20,8 +20,16 @@
 .repositorio-item {
     margin: var(--espacamento-itens) 0;
     padding: var(--espacamento-texto);
-    border-left: 0.1vw solid rgb(109, 109, 109);
-    border-right: 0.1vw solid #999;
+    --largura-borda: clamp(2px, 0.2vw, 0.2vw);
+    border-left: var(--largura-borda) solid #999;
+    border-right: var(--largura-borda) solid #999;
+    background-color: rgba(0, 0, 0, .02);
+    cursor: pointer;
+}
+.repositorio-item:hover {
+    background-color: rgba(255, 136, 0, .05);
+    border-color: rgb(255, 136, 0);
+    box-shadow: 0 0 var(--espacamento-texto) orange;
 }
 
 .repositorio-item h1 {
@@ -30,7 +38,7 @@
 }
 
 .item-descricao {
-    margin-top: var(--espacamento-texto);
+    margin: calc(var(--espacamento-texto) / 2) 0;
     font-size: var(--fonte-media-itens);
 }
 
