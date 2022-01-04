@@ -15,7 +15,7 @@ const paths = {
 
       repositories: {
         label: "Repositories",
-        path: "/search/repositories/:searchText"
+        path: "/search/:searchText/"
       }
     }
   }
