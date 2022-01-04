@@ -50,22 +50,23 @@
 }
 
 
-.formulario-busca input[type="button"] {
+.formulario-busca button {
     padding: calc(var(--espacamento-inputs) / 2);
     margin-top: var(--espacamento-inputs);
 
     font-size: var(--tamanho-texto-formulario);
     background-color: rgb(158, 178, 187);
+    border: none;
     border-radius: 0.5em;
     cursor: pointer;
 }
 
-.formulario-busca input[type="button"]:hover {
+.formulario-busca button {
     background-color: rgb(130, 156, 168);
 }
 
 @media(max-width: 500px) {
-    .formulario-busca input[type="button"] {
+    .formulario-busca button {
         width: 95%;
     }
 }

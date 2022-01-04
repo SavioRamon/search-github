@@ -3,15 +3,30 @@ import "./style.css";
 
 import { MdClear } from "react-icons/md";
 
+import { useNavigate } from "react-router-dom";
+
 function SearchFormulario() {
+    const navigate = useNavigate();
 
     const [textoBusca, setTextoBusca] = useState("");
+
+    function enviando() {
+        if(textoBusca) {
+            const buscaConvertida = encodeURIComponent(textoBusca);
+            navigate(`/search/${buscaConvertida}`);
+        }
+        
+    }
 
     return (
         <form 
             className="formulario-busca" 
-            action="search"
-            method="GET"
+            action=""
+            method=""
+            onSubmit={e=>{
+                e.preventDefault();
+                enviando();
+            }}
         >
             <label className="label-pesquisa" htmlFor="texto-pesquisa">
                 <input 
@@ -32,7 +47,7 @@ function SearchFormulario() {
 
             </label>
             
-            <input type="button" value="Buscar" />
+            <button>Buscar</button>
         </form>
     )
 };
