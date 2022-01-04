@@ -27,6 +27,16 @@ export default function Repositorios() {
               return (
                 <li className="repositorio-item" key={key}>
                   <h1>{item.name}</h1>
+
+                  <p className="item-descricao">
+                    {item.description && item.description.length > 100?
+                      `${item.description.substring(0, 100)}...`
+                      :
+                      item.description
+                    }
+                  </p>
+
+                  
               </li>  
               )
               

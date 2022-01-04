@@ -10,7 +10,7 @@
     list-style-type: none;
 
     --tamanho-fonte-itens: clamp(11px, 1vw, 1vw);
-    --espacamento-texto: clamp(5px, 0.5vw, 0.5vw);
+    --espacamento-texto: clamp(4px, 0.4vw, 0.4vw);
     --espacamento-itens: clamp(20px, 1.5vw, 1.5vw);
 }
 
@@ -23,5 +23,10 @@
 
 .repositorio-item h1 {
     font-size: clamp(13px, 1.2vw, 1.2vw);
-    color: rgb(82, 82, 82);
+    color: rgb(224, 153, 0);
+}
+
+.item-descricao {
+    margin-top: var(--espacamento-texto);
+    font-size: var(--tamanho-fonte-itens);
 }
