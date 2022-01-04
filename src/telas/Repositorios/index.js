@@ -36,7 +36,19 @@ export default function Repositorios() {
                     }
                   </p>
 
-                  
+                  {item.topics.length > 0 &&
+                    <ul className="lista-topicos-repositorio">
+                      {item.topics.map((topico, key)=>{
+                        return (
+                          <li key={key}>
+                              {topico}
+                          </li>     
+                        )
+                      })}
+                    </ul>
+                  }
+
+
               </li>  
               )
               
