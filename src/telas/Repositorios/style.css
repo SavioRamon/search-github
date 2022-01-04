@@ -46,7 +46,26 @@
     font-size: var(--fonte-pequena-itens);
     border-radius: var(--fonte-pequena-itens);
     border: 0.1vw solid rgb(255, 174, 0);
-    background-color: rgb(255, 243, 228);
     color: rgb(255, 136, 0);
     font-weight: bold;
+}
+
+.informacoes-extras {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.informacoes-extras .info {
+    margin-right: calc(var(--espacamento-texto) * 2);
+    display: flex;
+    align-items: center;
+    font-size: var(--fonte-pequena-itens);
+}
+
+.icone-info {
+    margin-right: calc(var(--espacamento-texto) / 3);
+    color: rgb(83, 83, 83);
+    font-size: var(--fonte-grande-itens);
+    
 }

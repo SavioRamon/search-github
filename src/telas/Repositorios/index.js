@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import "./style.css";
 
+import { BsStarFill } from "react-icons/bs";
+import { AiOutlineFile } from "react-icons/ai";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Creators as searchCreators } from "../../store/ducks/searchData";
 
@@ -47,6 +50,34 @@ export default function Repositorios() {
                       })}
                     </ul>
                   }
+                
+                  <div className="informacoes-extras">
+                      <div className="estrelas info">
+                          <div className="icone-info">
+                              <BsStarFill />
+                          </div>
+                          {item.stargazers_count}
+                      </div>
+
+                      {item.language &&
+                        <div className="linguagem info">
+                          <div className="icone-info">
+                              <AiOutlineFile />
+                          </div>
+                          {item.language}        
+                        </div>
+                      }
+
+                      {item.license &&
+                        <div className="licensa info">
+                            {item.license.spdx_id} license
+                        </div>
+                      }
+
+                      
+                      
+                  </div>
+                  
 
 
               </li>  
