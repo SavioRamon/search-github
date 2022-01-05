@@ -1,3 +1,9 @@
+.formulario-area {
+    margin: 4vw;
+    width:  100%;
+    display: flex;
+    justify-content: center;
+}
 
 .formulario-busca {
     width: clamp(300px, 50vw, 90%);

@@ -13,9 +13,7 @@ function Inicio() {
             </div>
 
 
-            <div className="inicio-area-formulario">
-                <SearchFormulario />
-            </div>
+            <SearchFormulario />
             
         </section>
     )

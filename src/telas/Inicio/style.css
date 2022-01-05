@@ -12,9 +12,3 @@
 .logo-grande {
     font-size: var(--logo-grande);
 }
-
-.inicio-area-formulario {
-    width:  100%;
-    display: flex;
-    justify-content: center;
-}

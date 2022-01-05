@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import "./style.css";
 
 import { MdClear } from "react-icons/md";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SearchFormulario() {
     const navigate = useNavigate();
+
+    const { searchText } = useParams();
 
     const [textoBusca, setTextoBusca] = useState("");
 
@@ -18,37 +20,44 @@ function SearchFormulario() {
         
     }
 
+    useLayoutEffect(()=>{
+        setTextoBusca(searchText);
+    }, [])
+
     return (
-        <form 
-            className="formulario-busca" 
-            action=""
-            method=""
-            onSubmit={e=>{
-                e.preventDefault();
-                enviando();
-            }}
-        >
-            <label className="label-pesquisa" htmlFor="texto-pesquisa">
-                <input 
-                    id="texto-pesquisa"
-                    type="text" 
-                    placeholder="Faça uma busca" 
-                    value={textoBusca}
-                    onChange={e => setTextoBusca(e.target.value)}
-                />
+        <article className="formulario-area">
+            <form 
+                className="formulario-busca" 
+                action=""
+                method=""
+                onSubmit={e=>{
+                    e.preventDefault();
+                    enviando();
+                }}
+            >
+                <label className="label-pesquisa" htmlFor="texto-pesquisa">
+                    <input 
+                        id="texto-pesquisa"
+                        type="text" 
+                        placeholder="Faça uma busca" 
+                        value={textoBusca}
+                        onChange={e => setTextoBusca(e.target.value)}
+                    />
 
-                {textoBusca &&
-                    <div className="limpa-busca" onClick={()=>{
-                        setTextoBusca("");
-                    }}>
-                        <MdClear />
-                    </div>
-                }
+                    {textoBusca &&
+                        <div className="limpa-busca" onClick={()=>{
+                            setTextoBusca("");
+                        }}>
+                            <MdClear />
+                        </div>
+                    }
 
-            </label>
-            
-            <button>Buscar</button>
-        </form>
+                </label>
+                
+                <button>Buscar</button>
+            </form>
+        </article>
+        
     )
 };
 
