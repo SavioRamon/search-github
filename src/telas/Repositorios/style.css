@@ -1,9 +1,15 @@
 .repositorios {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+.conteudo-repositorios {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .lista-repositorios {
     margin: 0 2vw;
     width: clamp(500px, 50vw, 95%);
