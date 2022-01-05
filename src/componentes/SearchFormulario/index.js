@@ -21,7 +21,7 @@ function SearchFormulario() {
     }
 
     useLayoutEffect(()=>{
-        setTextoBusca(searchText);
+        searchText && setTextoBusca(searchText);
     }, [])
 
     return (
