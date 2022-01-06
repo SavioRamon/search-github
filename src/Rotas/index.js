@@ -15,7 +15,8 @@ const paths = {
 
       repositories: {
         label: "Repositories",
-        path: "/search/:searchText/"
+        path: "/search/:searchText/:pagina",
+        path2: "/search/:searchText/"
       }
     }
   }
@@ -30,6 +31,7 @@ export default function Rotas () {
             <Route path={paths.home.search.path} element={ <Inicio /> } />
 
             <Route path={paths.home.search.repositories.path} element={ <Repositorios /> } />
+            <Route path={paths.home.search.repositories.path2} element={ <Repositorios /> } />
           </Routes>
         </BrowserRouter>
     )
