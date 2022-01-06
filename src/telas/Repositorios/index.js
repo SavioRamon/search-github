@@ -3,6 +3,7 @@ import "./style.css";
 
 
 import SearchFormulario from "../../componentes/SearchFormulario";
+import PaginasRepositorios from "../../componentes/PaginasRepositorios";
 
 import { BsStarFill } from "react-icons/bs";
 import { AiOutlineFile } from "react-icons/ai";
@@ -17,13 +18,28 @@ import moment from "moment";
 
 export default function Repositorios() {
     const dispatch = useDispatch();
-    const { searchText } = useParams();
+    const { searchText, pagina } = useParams();
 
     const repositorios = useSelector(state=>state.searchData.repositorios)
     
-    useEffect(()=>{
+    
+    function getRequisicaoRepositorios() {
+
+      if(pagina) {
+          const analiseInteiro = /^[0-9]+$/;
+          if(analiseInteiro.test(pagina)){
+              dispatch(searchCreators.getRepositorios(searchText, pagina));
+          }
+
+      } else {
         dispatch(searchCreators.getRepositorios(searchText));
-    }, [searchText]);
+      };
+    };
+
+
+    useEffect(()=>{
+      getRequisicaoRepositorios();
+    }, [searchText, pagina]);
 
 
     function ultimaAtualizacaoRepositorio(data){
@@ -111,6 +127,7 @@ export default function Repositorios() {
           </ul>
         </section>
         
+        <PaginasRepositorios />
         
       </section>
     )
