@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import "./style.css";
 
 import { useSelector } from "react-redux";
@@ -45,12 +45,12 @@ function retornaPaginacao(paginasTot, paginaAtual) {
         const espacamentoEntrePaginas = Math.abs(paginaAtual - numero);
 
         (function personalizandoArray(){
-            (numero === primeiraPagina) && (valorParaAdicionar = primeiraPagina);
         
             (espacamentoEntrePaginas <= 2) && (valorParaAdicionar = numero);
     
             (espacamentoEntrePaginas === 3) && (valorParaAdicionar = "...");   
             
+            (numero === primeiraPagina) && (valorParaAdicionar = primeiraPagina);
             (numero === ultimaPagina) && (valorParaAdicionar = ultimaPagina);
                 
             valorParaAdicionar && listaDePaginas.push(valorParaAdicionar);
@@ -68,16 +68,20 @@ export default function PaginasRepositorios() {
 
     const dadosRepositorios = useSelector(state=>state.searchData.repositorios);
 
-    const { pagina=1 } = useParams();
+    const { searchText, pagina: paginaParametro=1 } = useParams();
     const navigate = useNavigate();
 
+    
+    function pesquisandoPorPagina(paginaEscolhida) {
+        navigate(`/search/${searchText}/${paginaEscolhida}`);
+    };
 
     useLayoutEffect(()=>{
         if(dadosRepositorios && dadosRepositorios.total_count) {
             // Inicia o carregamento das páginas
             const totalDePaginas = carregaTotalDePaginas(dadosRepositorios);
 
-            const paginasEmLista = retornaPaginacao(totalDePaginas, pagina);
+            const paginasEmLista = retornaPaginacao(totalDePaginas, paginaParametro);
 
             setArrayPaginas(paginasEmLista);
 
@@ -86,11 +90,30 @@ export default function PaginasRepositorios() {
 
 
     return (
-        <div className="area-paginacao">
-            <nav className="paginacao-navegacao">
-            
-            </nav>
-        </div>
-        
+        <React.Fragment>
+            {arrayPaginas &&
+                <div className="area-paginacao">
+                    <ul className="paginacao-lista">
+                        {arrayPaginas.map((pagina, key)=>{
+                            return pagina === "..."?
+                                <li key={key}>
+                                    <span>{pagina}</span>
+                                </li>
+                                :
+                                <li 
+                                    key={key}
+                                    className={`numero${paginaParametro == pagina? " foco" : ""}`}
+                                    onClick={()=>{
+                                        pesquisandoPorPagina(pagina);
+                                    }}
+                                >
+                                    <span>{pagina}</span>
+                                </li>
+                            
+                        })}
+                    </ul>
+                </div>
+            }
+        </React.Fragment>
     );
 };

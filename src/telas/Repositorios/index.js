@@ -127,7 +127,10 @@ export default function Repositorios() {
           </ul>
         </section>
         
-        <PaginasRepositorios />
+        {repositorios &&
+          <PaginasRepositorios />
+        }
+        
         
       </section>
     )
