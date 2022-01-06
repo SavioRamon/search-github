@@ -4,10 +4,11 @@ export const Types = {
 };
 
 export const Creators = {
-    getRepositorios: (textoPesquisa)=>({
+    getRepositorios: (textoPesquisa, pagina)=>({
         type: Types.GET_REPOSITORIOS,
         payload: {
-            textoPesquisa
+            textoPesquisa,
+            pagina
         }
     }),
     

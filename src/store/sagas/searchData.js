@@ -5,8 +5,8 @@ import { apiRequisicoes } from "../../servicos/api";
 import { Creators as searchDataCreators } from "../ducks/searchData";
 
 export function* getRepositorios(dados) {
-    const { textoPesquisa } = dados.payload;
-    const data = yield call(apiRequisicoes.getRepositorios, textoPesquisa);
+    const { textoPesquisa, pagina } = dados.payload;
+    const data = yield call(apiRequisicoes.getRepositorios, textoPesquisa, pagina);
     
     if(data.items.length > 0) {
         yield put(searchDataCreators.setDados(data));
