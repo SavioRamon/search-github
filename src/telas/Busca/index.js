@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 
-export default function Repositorios() {
+export default function Busca() {
     const dispatch = useDispatch();
     const { searchText, pagina } = useParams();
 
