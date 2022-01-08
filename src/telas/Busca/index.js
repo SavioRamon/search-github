@@ -12,20 +12,22 @@ import { FiUser } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Creators as searchCreators } from "../../store/ducks/searchData";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import moment from "moment";
 
 
 export default function Busca() {
-    const dispatch = useDispatch();
-    const { searchText, pagina } = useParams();
 
+    const { searchText, pagina } = useParams();
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
     const repositorios = useSelector(state=>state.searchData.repositorios)
     
     
+    
     function getRequisicaoRepositorios() {
-
       if(pagina) {
           const analiseInteiro = /^[0-9]+$/;
           if(analiseInteiro.test(pagina)){
@@ -38,14 +40,24 @@ export default function Busca() {
     };
 
 
+
+    const redirecionaParaRepositorio=(nomeRepositorio)=>{
+      const converteNome = encodeURIComponent(nomeRepositorio);
+      navigate(`/repositorie/${converteNome}`);
+    };
+
+
+
     useEffect(()=>{
       getRequisicaoRepositorios();
     }, [searchText, pagina]);
 
 
+
     function ultimaAtualizacaoRepositorio(data){
         return `Updated ${moment(data).fromNow()}`;
-    }
+    };
+
 
     return (
       <section className="busca">
@@ -61,7 +73,11 @@ export default function Busca() {
             {repositorios &&
               repositorios.items.map((item, key)=>{
                 return (
-                  <li className="repositorio-item" key={key}>
+                  <li className="repositorio-item" key={key} onClick={()=>{
+                    redirecionaParaRepositorio(item.full_name);
+                  }}>
+
+
                     <h1>{item.name}</h1>
 
                     <p className="item-descricao">
