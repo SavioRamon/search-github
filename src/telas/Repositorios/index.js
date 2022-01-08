@@ -7,6 +7,7 @@ import PaginasRepositorios from "../../componentes/PaginasRepositorios";
 
 import { BsStarFill } from "react-icons/bs";
 import { AiOutlineFile } from "react-icons/ai";
+import { FiUser } from "react-icons/fi";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Creators as searchCreators } from "../../store/ducks/searchData";
@@ -84,33 +85,41 @@ export default function Repositorios() {
                     }
                   
                     <div className="informacoes-extras">
-                        <div className="info">
-                            <div className="icone-info">
-                                <BsStarFill />
-                            </div>
-                            {item.stargazers_count}
+
+                      <div className="info usuario">
+                        <div className="icone-info">
+                            <FiUser />
                         </div>
+                        {item.owner.login}
+                      </div>
 
-                        {item.language &&
-                          <div className="info">
-                            <div className="icone-info">
-                                <AiOutlineFile />
-                            </div>
-                            {item.language}        
-                          </div>
-                        }
-
-                        {item.license &&
-                          <div className="info">
-                              {item.license.spdx_id} license
-                          </div>
-                        }
-
-                        <div className="info">
-                            <div>
-                                {ultimaAtualizacaoRepositorio(item.updated_at)}
-                            </div>
+                      <div className="info">
+                        <div className="icone-info">
+                            <BsStarFill />
                         </div>
+                        {item.stargazers_count}
+                      </div>
+
+                      {item.language &&
+                        <div className="info">
+                          <div className="icone-info">
+                              <AiOutlineFile />
+                          </div>
+                          {item.language}        
+                        </div>
+                      }
+
+                      {item.license &&
+                        <div className="info">
+                          {item.license.spdx_id} license
+                        </div>
+                      }
+
+                      <div className="info">
+                        <div>
+                            {ultimaAtualizacaoRepositorio(item.updated_at)}
+                        </div>
+                      </div>
 
 
                         

@@ -74,7 +74,15 @@
     margin-right: calc(var(--espacamento-texto) * 2);
     display: flex;
     align-items: center;
-    font-size: var(--fonte-pequena-itens);
+    font-size: var(--fonte-media-itens);
+    color: #000;
+}
+
+.informacoes-extras .usuario {
+    margin: var(--espacamento-texto) 0;
+    width: 100%;
+    color: #000;
+    font-weight: bold;
 }
 
 .icone-info {
