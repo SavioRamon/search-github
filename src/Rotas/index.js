@@ -1,6 +1,7 @@
 
 import Inicio from "../telas/Inicio";
 import Busca from "../telas/Busca";
+import Repositorio from "../telas/Repositorio";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const paths = {
 
     repositorie: {
       label: "Repositorie",
-      path: "/repositorie/:nomeRepositorio"
+      path: "/repositorie/:nomeRepositorio/"
     }
   }
 }
@@ -33,6 +34,9 @@ export default function Rotas () {
 
             <Route path={paths.home.search.path2} element={ <Busca /> } />
             <Route path={paths.home.search.path3} element={ <Busca /> } />
+          
+            <Route path={paths.home.repositorie.path} element={ <Repositorio /> } />
+
           </Routes>
         </BrowserRouter>
     )
