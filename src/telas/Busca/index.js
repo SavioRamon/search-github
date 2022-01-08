@@ -48,13 +48,13 @@ export default function Repositorios() {
     }
 
     return (
-      <section className="repositorios">
+      <section className="busca">
         
 
         <SearchFormulario />
 
 
-        <section className="conteudo-repositorios">
+        <section className="conteudo-busca">
 
           <ul className="lista-repositorios">
 
