@@ -8,7 +8,7 @@ export function* getRepositorios(dados) {
     const { textoPesquisa, pagina } = dados.payload;
     const data = yield call(apiRequisicoes.getRepositorios, textoPesquisa, pagina);
     
-    if(data.items.length > 0) {
+    if(data.total_count > 0) {
         yield put(searchDataCreators.setDados(data));
 
     } else {
@@ -20,8 +20,8 @@ export function* getRepositorios(dados) {
 export function* getRepositorioDDetalhado(dados) {
     const textoPesquisa = dados.payload;
     const { dataRepo, dataIssues } = yield call(apiRequisicoes.getRepositorioUnico, textoPesquisa);
-
-    if(dataRepo.items.length) {
+    
+    if(dataRepo.total_count > 0) {
         yield put(searchDataCreators.setRepositorioDetalhado({dataRepo, dataIssues}));
     };
 };
