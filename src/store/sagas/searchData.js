@@ -16,3 +16,12 @@ export function* getRepositorios(dados) {
     }
     
 };
+
+export function* getRepositorioDDetalhado(dados) {
+    const textoPesquisa = dados.payload;
+    const { dataRepo, dataIssues } = yield call(apiRequisicoes.getRepositorioUnico, textoPesquisa);
+
+    if(dataRepo.items.length) {
+        yield put(searchDataCreators.setRepositorioDetalhado({dataRepo, dataIssues}));
+    };
+};

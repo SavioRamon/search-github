@@ -1,6 +1,9 @@
 export const Types = {
     GET_REPOSITORIOS: "GET_REPOSITORIOS_ASYNC",
-    SET_REPOSITORIOS: "SET_REPOSITORIOS"
+    GET_REPOSITORIO_DETALHADO: "GET_REPOSITORIO_DETALHADO_ASYNC",
+
+    SET_REPOSITORIOS: "SET_REPOSITORIOS",
+    SET_REPOSITORIO_DETALHADO: "SET_REPOSITORIO_DETALHADO"
 };
 
 export const Creators = {
@@ -11,16 +14,31 @@ export const Creators = {
             pagina
         }
     }),
+
+    getRepositorioDetalhado: (nomeRepo)=>({
+        type: Types.GET_REPOSITORIO_DETALHADO,
+        payload: nomeRepo
+    }),
     
     setDados: (dados)=>({
         type: Types.SET_REPOSITORIOS,
         payload: dados
     }),
+
+    setRepositorioDetalhado: (textoPesquisa)=>({
+        type: Types.SET_REPOSITORIO_DETALHADO,
+        payload: textoPesquisa
+    })
 };
 
 const STATE_INICIAL = {
+    repositorioDetalhado: {
+        dataRepo: null,
+        dataIssues: null
+    },
+
     repositorios: null,
-    pagina: 0
+    pagina: 0,
 };
 
 export default function reducer(state=STATE_INICIAL, { type, payload }) {
@@ -31,7 +49,16 @@ export default function reducer(state=STATE_INICIAL, { type, payload }) {
                 repositorios: payload
             };
 
+        case Types.SET_REPOSITORIO_DETALHADO:
+            return {
+                ...state,
+                repositorioDetalhado: {
+                    dataRepo: payload.dataRepo.items[0],
+                    dataIssues: payload.dataIssues.items
+                }
+            };
+
         default:
             return state;
-    }
+    };
 };

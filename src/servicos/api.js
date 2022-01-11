@@ -18,10 +18,15 @@ export const apiRequisicoes = {
     },
 
     async getRepositorioUnico(textoPesquisa){
-        const url = `${BASE_API}/repositories?q=${textoPesquisa}`;
+        const urlRepo = `${BASE_API}/repositories?q=${textoPesquisa}&per_page=1`;
+        const urlIssues = `${BASE_API}/issues?q=repo:${textoPesquisa}`;
 
-        const data = basicFetch(url);
+        const dataRepo = await basicFetch(urlRepo);
+        const dataIssues = await basicFetch(urlIssues);
 
-        return data;
+        return {
+            dataRepo,
+            dataIssues
+        };
     }
 };
