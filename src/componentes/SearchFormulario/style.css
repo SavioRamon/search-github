@@ -1,5 +1,5 @@
 .formulario-area {
-    margin: 4vw;
+    margin: 1vw;
     width:  100%;
     display: flex;
     justify-content: center;
@@ -11,9 +11,9 @@
     flex-direction: column;
     align-items: center;
     
-    --tamanho-area-formulario: clamp(36px, 3vw, 3vw);
+    --tamanho-area-formulario: clamp(30px, 3vw, 3vw);
     --tamanho-texto-formulario: clamp(12px, 1.2vw, 1.2vw);
-    --espacamento-inputs: clamp(5px, 0.9vw, 0.9vw);
+    --espacamento-inputs: clamp(4px, 0.5vw, 0.5vw);
 }
 
 
@@ -57,7 +57,7 @@
 
 
 .formulario-busca button {
-    padding: calc(var(--espacamento-inputs) / 2);
+    padding: var(--espacamento-inputs);
     margin-top: var(--espacamento-inputs);
 
     font-size: var(--tamanho-texto-formulario);
