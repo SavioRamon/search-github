@@ -22,6 +22,9 @@
 
     --espacamento-texto: clamp(4px, 0.4vw, 0.4vw);
     --espacamento-itens: clamp(20px, 1.5vw, 1.5vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sem-lista {
@@ -31,6 +34,7 @@
 }
 
 .repositorio-item {
+    width: 100%;
     margin: var(--espacamento-itens) 0;
     padding: var(--espacamento-texto);
     --largura-borda: clamp(2px, 0.2vw, 0.2vw);

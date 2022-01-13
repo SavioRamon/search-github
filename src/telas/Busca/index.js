@@ -3,6 +3,7 @@ import "./style.css";
 
 import SearchFormulario from "../../componentes/SearchFormulario";
 import PaginasRepositorios from "../../componentes/PaginasRepositorios";
+import GifLoader from "../../componentes/GifLoader";
 
 import { BsStarFill } from "react-icons/bs";
 import { AiOutlineFile } from "react-icons/ai";
@@ -65,6 +66,10 @@ export default function Busca() {
         <section className="conteudo-busca">
 
           <ul className="lista-repositorios">
+
+            {!load && 
+              <GifLoader />
+            }
 
             {load && !repositorios &&
               // Sem resultados

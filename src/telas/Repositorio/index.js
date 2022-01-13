@@ -1,6 +1,8 @@
 import React, { useLayoutEffect } from "react";
 import "./style.css";
 
+import GifLoader from "../../componentes/GifLoader";
+
 import { VscRepoForked } from "react-icons/vsc";
 import { BsStarFill, BsEyeFill, BsCodeSlash } from "react-icons/bs";
 import { FaBalanceScale, FaRegCommentAlt } from "react-icons/fa";
@@ -39,6 +41,10 @@ export default function Repositorio() {
     
     return (
         <section className="repositorio-detalhado">
+
+            {!load &&
+                <GifLoader />
+            }
 
             {load && !dataRepo &&
                 // Repositório Não foi encontrado
