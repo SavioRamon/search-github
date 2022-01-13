@@ -1,35 +1,10 @@
 
-:root {
-    --texto-grande-logo: clamp(20px, 0.9vw, 0.9vw);
-    --espacamento-padrao-header: clamp(10px, 1vw, 1vw);
-}
-
 #cabecalho {
-    padding: var(--espacamento-padrao-header);
+    padding: clamp(10px, 1vw, 1vw);
     width: 100%;
     border-bottom: 0.1vw solid black;
 }
 
 .logo {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-}
-
-.icone-logo {
-    margin-right: 0.4vw;
-    font-size: clamp(25px, 1vw, 1vw);
-}
-
-
-.texto-logo {
-    line-height: var(--texto-grande-logo);
-    font-size: var(--texto-grande-logo);
-    display: flex;
-    flex-direction: column;
-}
-
-.texto-logo span {
-    color: #999;
-    font-size: calc(var(--texto-grande-logo) / 1.5);
+    font-size: clamp(25px, 2vw, 2vw);
 }

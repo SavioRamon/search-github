@@ -8,13 +8,7 @@ function Cabecalho() {
     return (
         <header id="cabecalho">
             <h1 className="logo"> 
-                <span className="icone-logo">
-                    <VscGithubAlt />
-                </span>
-                <p className="texto-logo">
-                    SearchGithub
-                    <span>Busca eficiente</span>
-                </p>
+                <VscGithubAlt />
             </h1>
         </header>
     )
