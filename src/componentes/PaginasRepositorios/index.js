@@ -65,8 +65,7 @@ function retornaPaginacao(paginasTot, paginaAtual) {
 export default function PaginasRepositorios() {
 
     const [arrayPaginas, setArrayPaginas] = useState([]);
-
-    const dadosRepositorios = useSelector(state=>state.searchData.repositorios);
+    const { repositorios, load } = useSelector(state=>state.searchData);
 
     const { searchText, pagina: paginaParametro=1 } = useParams();
     const navigate = useNavigate();
@@ -77,33 +76,33 @@ export default function PaginasRepositorios() {
     };
 
     useLayoutEffect(()=>{
-        if(dadosRepositorios && dadosRepositorios.total_count) {
+        if(repositorios && repositorios.total_count) {
             // Inicia o carregamento das páginas
-            const totalDePaginas = carregaTotalDePaginas(dadosRepositorios);
+            const totalDePaginas = carregaTotalDePaginas(repositorios);
 
             const paginasEmLista = retornaPaginacao(totalDePaginas, paginaParametro);
 
             setArrayPaginas(paginasEmLista);
 
         };
-    }, [dadosRepositorios]);
+    }, [repositorios]);
 
 
     return (
         <React.Fragment>
-            {arrayPaginas &&
+            {arrayPaginas && load &&
                 <div className="area-paginacao">
                     <ul className="paginacao-lista">
                         {arrayPaginas.map((pagina, key)=>{
                             return pagina === "..."?
-                                <li key={key}>
+                                <li key={key} className="reticencia">
                                     <span>{pagina}</span>
                                 </li>
                                 :
                                 <li 
                                     key={key}
-                                    className={`numero${paginaParametro == pagina? " foco" : ""}`}
-                                    onClick={()=>{
+                                    className={`${paginaParametro == pagina? "foco" : "sem-foco"}`}
+                                    inhos  onClick={()=>{
                                         pesquisandoPorPagina(pagina);
                                     }}
                                 >

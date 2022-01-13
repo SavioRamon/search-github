@@ -11,22 +11,26 @@
     list-style-type: none;
 }
 
-.paginacao-lista .foco {
-    background-color: rgb(201, 130, 0);
-}
-
-.paginacao-lista .numero {
-    cursor: pointer;
-}
-
 .paginacao-lista li {
     border: 1px solid black;
     padding: calc(var(--fonte-pagina-itens) / 3) calc(var(--fonte-pagina-itens) / 2);
     line-height: var(--fonte-pagina-itens);
     font-size: var(--fonte-pagina-itens);
-    cursor: default;
 }
 
-.paginacao-lista li:hover {
+.paginacao-lista .foco {
+    background-color: rgb(201, 130, 0);
+    cursor: pointer;
+}
+
+.paginacao-lista .sem-foco {
+    cursor: pointer;
+}
+
+.paginacao-lista .sem-foco:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.paginacao-lista .reticencia {
+    cursor: default;
 }
