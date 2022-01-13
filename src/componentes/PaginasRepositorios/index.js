@@ -85,7 +85,7 @@ export default function PaginasRepositorios() {
             setArrayPaginas(paginasEmLista);
 
         };
-    }, [repositorios]);
+    }, [repositorios, paginaParametro]);
 
 
     return (
@@ -101,8 +101,8 @@ export default function PaginasRepositorios() {
                                 :
                                 <li 
                                     key={key}
-                                    className={`${paginaParametro == pagina? "foco" : "sem-foco"}`}
-                                    inhos  onClick={()=>{
+                                    className={`${Number(paginaParametro) === pagina? "foco" : "sem-foco"}`}
+                                    onClick={()=>{
                                         pesquisandoPorPagina(pagina);
                                     }}
                                 >
