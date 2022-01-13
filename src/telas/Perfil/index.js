@@ -20,9 +20,9 @@ function convertendoData(dataISO) {
 };
 
 
-export default function Repositorio() {
+export default function Perfil() {
 
-    const { nomeRepositorio } = useParams();
+    const { perfil } = useParams();
     const { dataRepo, dataIssues } = useSelector(state=>state.searchData.repositorioDetalhado);
     const load = useSelector(state=>state.searchData.load);
 
@@ -35,12 +35,12 @@ export default function Repositorio() {
             dispatch(searchCreators.setLoad(false));
 
             // chamando creator de requisição
-            dispatch(searchCreators.getRepositorioDetalhado(nomeRepositorio));
+            dispatch(searchCreators.getRepositorioDetalhado(perfil));
         }());
-    }, []);
+    }, [dispatch, perfil]);
     
     return (
-        <section className="repositorio-detalhado">
+        <section className="perfil">
 
             {!load &&
                 <GifLoader />
@@ -48,7 +48,7 @@ export default function Repositorio() {
 
             {load && !dataRepo &&
                 // Repositório Não foi encontrado
-                <div className="sem-repositorio">
+                <div className="sem-perfil">
                     Repositorio não encontrado
                 </div>
             }
@@ -59,7 +59,7 @@ export default function Repositorio() {
                         <img 
                             className="imagem-usuario-repositorio" 
                             src={dataRepo.owner.avatar_url} 
-                            rel="imagem de perfil"
+                            alt="imagem de perfil"
                         />
                         <p className="nome-usuario">
                             {dataRepo.owner.login}
@@ -76,7 +76,7 @@ export default function Repositorio() {
                                 {dataRepo.topics.map((topico, key)=>{
                                     return (
                                         <li key={key}>
-                                            <a target="_blank" href={`https://github.com/topics/${topico}`}>
+                                            <a target="_blank" rel="noreferrer" href={`https://github.com/topics/${topico}`}>
                                                 {topico}
                                             </a>
                                         </li>
@@ -161,6 +161,8 @@ export default function Repositorio() {
                                             </div>
     
                                         )
+                                    } else {
+                                        return null
                                     }
                                 })}
                             </div>

@@ -31,7 +31,7 @@ export default function Busca() {
 
     const redirecionaParaRepositorio=(nomeRepositorio)=>{
       const converteNome = encodeURIComponent(nomeRepositorio);
-      navigate(`/repositorie/${converteNome}`);
+      navigate(`/${converteNome}`);
     };
 
 
@@ -55,7 +55,7 @@ export default function Busca() {
           dispatch(searchCreators.getRepositorios(searchText));
         };
       }());
-    }, [searchText, pagina]);
+    }, [searchText, pagina, dispatch]);
 
 
     return (
