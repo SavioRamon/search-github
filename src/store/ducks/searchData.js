@@ -3,7 +3,8 @@ export const Types = {
     GET_REPOSITORIO_DETALHADO: "GET_REPOSITORIO_DETALHADO_ASYNC",
 
     SET_REPOSITORIOS: "SET_REPOSITORIOS",
-    SET_REPOSITORIO_DETALHADO: "SET_REPOSITORIO_DETALHADO"
+    SET_REPOSITORIO_DETALHADO: "SET_REPOSITORIO_DETALHADO",
+    SET_LOAD: "SET_LOAD"
 };
 
 export const Creators = {
@@ -28,6 +29,11 @@ export const Creators = {
     setRepositorioDetalhado: (textoPesquisa)=>({
         type: Types.SET_REPOSITORIO_DETALHADO,
         payload: textoPesquisa
+    }),
+
+    setLoad: (valor)=>({
+        type: Types.SET_LOAD,
+        payload: valor
     })
 };
 
@@ -39,6 +45,7 @@ const STATE_INICIAL = {
 
     repositorios: null,
     pagina: 0,
+    load: false
 };
 
 export default function reducer(state=STATE_INICIAL, { type, payload }) {
@@ -46,17 +53,24 @@ export default function reducer(state=STATE_INICIAL, { type, payload }) {
         case Types.SET_REPOSITORIOS:
             return {
                 ...state,
-                repositorios: payload
+                repositorios: payload,
             };
 
         case Types.SET_REPOSITORIO_DETALHADO:
+            const detalhes = {
+                dataRepo: payload.dataRepo.items[0],
+                dataIssues: payload.dataIssues.items
+            }
             return {
                 ...state,
-                repositorioDetalhado: {
-                    dataRepo: payload.dataRepo.items[0],
-                    dataIssues: payload.dataIssues.items
-                }
+                repositorioDetalhado: detalhes
             };
+
+        case Types.SET_LOAD:
+            return {
+                ...state,
+                load: payload
+            }
 
         default:
             return state;

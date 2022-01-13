@@ -24,6 +24,12 @@
     --espacamento-itens: clamp(20px, 1.5vw, 1.5vw);
 }
 
+.sem-lista {
+    margin-top: var(--espacamento-itens);
+    text-align: center;
+    font-size: calc(var(--fonte-grande-itens) * 1.5);
+}
+
 .repositorio-item {
     margin: var(--espacamento-itens) 0;
     padding: var(--espacamento-texto);

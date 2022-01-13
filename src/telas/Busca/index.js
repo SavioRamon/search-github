@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import "./style.css";
 
-
 import SearchFormulario from "../../componentes/SearchFormulario";
 import PaginasRepositorios from "../../componentes/PaginasRepositorios";
 
@@ -17,29 +16,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 
 
-export default function Busca() {
+function ultimaAtualizacaoRepositorio(data){
+  return `Updated ${moment(data).fromNow()}`;
+};
 
+
+export default function Busca() {
     const { searchText, pagina } = useParams();
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
-    const repositorios = useSelector(state=>state.searchData.repositorios)
+    const { repositorios, load } = useSelector(state=>state.searchData);
     
-    
-    
-    function getRequisicaoRepositorios() {
-      if(pagina) {
-          const analiseInteiro = /^[0-9]+$/;
-          if(analiseInteiro.test(pagina)){
-              dispatch(searchCreators.getRepositorios(searchText, pagina));
-          }
-
-      } else {
-        dispatch(searchCreators.getRepositorios(searchText));
-      };
-    };
-
-
 
     const redirecionaParaRepositorio=(nomeRepositorio)=>{
       const converteNome = encodeURIComponent(nomeRepositorio);
@@ -47,30 +34,46 @@ export default function Busca() {
     };
 
 
-
     useEffect(()=>{
-      getRequisicaoRepositorios();
+      
+      (function getRequisicaoRepositorios() {
+        // função responsável por iniciar a requisição
+
+        // Load false diz para o script que a requisição ainda não foi completada
+        dispatch(searchCreators.setLoad(false));
+
+        if(pagina) {
+            const analiseInteiro = /^[0-9]+$/;
+            if(analiseInteiro.test(pagina)){
+                // chamando creator de requisição com página
+                dispatch(searchCreators.getRepositorios(searchText, pagina));
+            }
+
+        } else {
+          // chamando creator de requisição sem página
+          dispatch(searchCreators.getRepositorios(searchText));
+        };
+      }());
     }, [searchText, pagina]);
-
-
-
-    function ultimaAtualizacaoRepositorio(data){
-        return `Updated ${moment(data).fromNow()}`;
-    };
 
 
     return (
       <section className="busca">
         
-
         <SearchFormulario />
-
 
         <section className="conteudo-busca">
 
           <ul className="lista-repositorios">
 
-            {repositorios &&
+            {load && !repositorios &&
+              // Sem resultados
+              <div className="sem-lista">
+                Nenhum resultado encontrado
+              </div>
+            }
+
+            {load && repositorios &&
               repositorios.items.map((item, key)=>{
                 return (
                   <li className="repositorio-item" key={key} onClick={()=>{

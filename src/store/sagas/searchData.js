@@ -11,10 +11,9 @@ export function* getRepositorios(dados) {
     if(data.total_count > 0) {
         yield put(searchDataCreators.setDados(data));
 
-    } else {
-        // Não existem resultados
     }
-    
+
+    yield put(searchDataCreators.setLoad(true)); 
 };
 
 export function* getRepositorioDDetalhado(dados) {
@@ -24,4 +23,6 @@ export function* getRepositorioDDetalhado(dados) {
     if(dataRepo.total_count > 0) {
         yield put(searchDataCreators.setRepositorioDetalhado({dataRepo, dataIssues}));
     };
+
+    yield put(searchDataCreators.setLoad(true));
 };

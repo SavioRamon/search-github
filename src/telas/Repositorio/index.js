@@ -13,23 +13,41 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 
+function convertendoData(dataISO) {
+    return `Updated ${moment(dataISO).fromNow()}`;
+};
+
+
 export default function Repositorio() {
 
     const { nomeRepositorio } = useParams();
     const { dataRepo, dataIssues } = useSelector(state=>state.searchData.repositorioDetalhado);
+    const load = useSelector(state=>state.searchData.load);
+
     const dispatch = useDispatch();
 
     useLayoutEffect(()=>{
-        dispatch(searchCreators.getRepositorioDetalhado(nomeRepositorio));
-    }, []);
+        (function getRequisicaoUnicoRepositorio(){
 
-    function convertendoData(dataISO) {
-        return `Updated ${moment(dataISO).fromNow()}`;
-    }
+            // setLoad false diz para o script que a requisição ainda não foi completada
+            dispatch(searchCreators.setLoad(false));
+
+            // chamando creator de requisição
+            dispatch(searchCreators.getRepositorioDetalhado(nomeRepositorio));
+        }());
+    }, []);
     
     return (
         <section className="repositorio-detalhado">
-            {dataRepo &&
+
+            {load && !dataRepo &&
+                // Repositório Não foi encontrado
+                <div className="sem-repositorio">
+                    Repositorio não encontrado
+                </div>
+            }
+
+            {load && dataRepo &&
                 <React.Fragment>
                     <article className="info-basica-perfil">
                         <img 
@@ -138,17 +156,12 @@ export default function Repositorio() {
     
                                         )
                                     }
-                                })
-                                    
-                                }
+                                })}
                             </div>
                         </div>
                     }
                     
-
-                </React.Fragment>
-                
-                
+                </React.Fragment>        
             }
         </section>
     );
