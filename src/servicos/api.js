@@ -1,11 +1,10 @@
+
 const BASE_API = "https://api.github.com/search";
 const porPagina = 20;
 
-const basicFetch = async(url)=>{
-    // Função de fetch genérica
-    const req = await fetch(url).then(dados=>dados.json());
-    return req;
-};
+// basicFetch faz uma requisição padrão e retorna os dados
+const basicFetch = async (url) => await fetch(url).then(dados => dados.json());
+
 
 export const apiRequisicoes = {
 
@@ -13,13 +12,13 @@ export const apiRequisicoes = {
         const url =
         `${BASE_API}/repositories?q=${textoPesquisa}/&page=${pagina}&per_page=${porPagina}`;
 
-        const data = basicFetch(url);
-        return data;
+        return basicFetch(url);
+        
     },
 
-    async getRepositorioUnico(textoPesquisa){
-        const urlRepo = `${BASE_API}/repositories?q=${textoPesquisa}&per_page=1`;
-        const urlIssues = `${BASE_API}/issues?q=repo:${textoPesquisa}`;
+    async getRepositorioUnico(nomePerfil, nomeRepositorio){
+        const urlRepo = `${BASE_API}/repositories?q=${nomePerfil}/${nomeRepositorio}&per_page=1`;
+        const urlIssues = `${BASE_API}/issues?q=repo:${nomePerfil}/${nomeRepositorio}`;
 
         const dataRepo = await basicFetch(urlRepo);
         const dataIssues = await basicFetch(urlIssues);

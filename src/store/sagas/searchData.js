@@ -15,14 +15,3 @@ export function* getRepositorios(dados) {
 
     yield put(searchDataCreators.setLoad(true)); 
 };
-
-export function* getRepositorioDDetalhado(dados) {
-    const textoPesquisa = dados.payload;
-    const { dataRepo, dataIssues } = yield call(apiRequisicoes.getRepositorioUnico, textoPesquisa);
-    
-    if(dataRepo.total_count > 0) {
-        yield put(searchDataCreators.setRepositorioDetalhado({dataRepo, dataIssues}));
-    };
-
-    yield put(searchDataCreators.setLoad(true));
-};
