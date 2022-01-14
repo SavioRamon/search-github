@@ -30,8 +30,7 @@ export default function Busca() {
     
 
     const redirecionaParaRepositorio=(nomeRepositorio)=>{
-      const converteNome = encodeURIComponent(nomeRepositorio);
-      navigate(`/${converteNome}`);
+      navigate(`/${nomeRepositorio}`);
     };
 
 
