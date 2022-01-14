@@ -87,7 +87,7 @@ export default function RepositorioDetalhado() {
                                     <span className="license">
                                         <FaBalanceScale />
                                     </span>
-                                    licença {dataRepo.license.spdx_id}
+                                    {dataRepo.license.spdx_id} license
 
                                 </div>
                             }

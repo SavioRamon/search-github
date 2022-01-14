@@ -9,24 +9,23 @@
 
 .area-esquerda {
     width: 70%;
-    border-bottom: 0.1vw solid #333;
+    border-bottom: 0.1vw solid var(--border-color);
 }
 
 .nome-detalhe {
     font-size: calc(var(--tamanho-fonte) * 1.5);
-    color: rgb(255, 136, 0);
+    color: var(--orange-text);
 }
 
 .descricao-detalhe {
     font-size: var(--tamanho-fonte);
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
 }
 
 
 .lista-tags-detalhe {
     width: 100%;
     margin-top: clamp(30px, 2vw, 2vw);
-    color: #fff;
     font-size: var(--tamanho-fonte);
 
     display: flex;
@@ -42,9 +41,9 @@
 .lista-tags-detalhe a {
     padding: calc(var(--tamanho-fonte) / 3);
     border-radius: calc(var(--tamanho-fonte) / 1.5);
-    border: 0.1vw solid rgb(255, 136, 0);
+    border: 0.1vw solid var(--orange-text);
     cursor: pointer;
-    color: rgb(255, 136, 0);
+    color: var(--orange-text);
     text-decoration: none;
 }
 
@@ -60,7 +59,7 @@
 .direita-item {
     margin: calc(var(--tamanho-fonte) / 2);
     font-size: var(--tamanho-fonte);
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
     display: flex;
     align-items: center;
 }
@@ -85,9 +84,9 @@
 .area-issues h2 {
     width: 100%;
     text-align: center;
-    color: rgb(104, 104, 104);
+    color: var(--color-text);
     font-size: calc(var(--tamanho-fonte) * 1.5);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgb(177, 177, 177, 0.3);
 }
 
 .lista-issues {
@@ -98,7 +97,7 @@
     padding: calc(var(--tamanho-fonte) / 2) 0;
     width: 100%;
     border-bottom: 0.1vw solid #333;
-    color: rgb(63, 63, 63);
+    color: var(--color-text);
     font-size: var(--tamanho-fonte);
     text-indent: var(--tamanho-fonte);
     cursor: pointer;
@@ -120,7 +119,7 @@
 }
 
 .item-issue:hover {
-    background-color: rgba(207, 207, 207, 0.1);
+    background-color: rgba(177, 177, 177, 0.2);
 }
 
 
@@ -131,6 +130,17 @@
     .area-repositorio{
         flex-direction: column;
     }
+
+    .area-esquerda {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lista-tags-detalhe {
+        justify-content: center;
+    }
+
     .area-direita, .area-esquerda {
         width: 100%;
     }

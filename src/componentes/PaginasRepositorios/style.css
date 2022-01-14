@@ -12,14 +12,15 @@
 }
 
 .paginacao-lista li {
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     padding: calc(var(--fonte-pagina-itens) / 3) calc(var(--fonte-pagina-itens) / 2);
     line-height: var(--fonte-pagina-itens);
     font-size: var(--fonte-pagina-itens);
+    color: var(--color-text);
 }
 
 .paginacao-lista .foco {
-    background-color: rgb(201, 130, 0);
+    background-color: var(--bg-page-list-focus);
     cursor: pointer;
 }
 
@@ -28,7 +29,7 @@
 }
 
 .paginacao-lista .sem-foco:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-page-list-hover);
 }
 
 .paginacao-lista .reticencia {

@@ -11,4 +11,5 @@
     margin-top: 3vw;
     font-size: clamp(40px, 4vw, 4vw);
     animation: loader-gif-girando infinite 2s linear;
+    color: var(--color-text);
 }

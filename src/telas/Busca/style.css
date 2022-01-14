@@ -38,25 +38,24 @@
     margin: var(--espacamento-itens) 0;
     padding: var(--espacamento-texto);
     --largura-borda: clamp(2px, 0.2vw, 0.2vw);
-    border-left: var(--largura-borda) solid #999;
-    border-right: var(--largura-borda) solid #999;
-    background-color: rgba(0, 0, 0, .02);
+    border: 0.1vw solid var(--border-color);
     cursor: pointer;
+    border-radius: 0.5em;
 }
 .repositorio-item:hover {
-    background-color: rgba(255, 136, 0, .05);
-    border-color: rgb(255, 136, 0);
-    box-shadow: 0 0 var(--espacamento-texto) orange;
+    background-color: rgba(255, 136, 0, 0.1);
+    border-color: var(--orange-text);
 }
 
 .repositorio-item h1 {
     font-size: var(--fonte-grande-itens);
-    color: rgb(255, 136, 0);
+    color: var(--orange-text);
 }
 
 .item-descricao {
     margin: calc(var(--espacamento-texto) / 2) 0;
     font-size: var(--fonte-media-itens);
+    color: var(--color-text);
 }
 
 .lista-topicos-repositorio {
@@ -70,8 +69,8 @@
     padding: var(--espacamento-texto);
     font-size: var(--fonte-pequena-itens);
     border-radius: var(--fonte-pequena-itens);
-    border: 0.1vw solid rgb(255, 174, 0);
-    color: rgb(255, 136, 0);
+    border: 0.1vw solid var(--orange-text);
+    color: var(--orange-text);
     font-weight: bold;
 }
 
@@ -86,19 +85,19 @@
     display: flex;
     align-items: center;
     font-size: var(--fonte-media-itens);
-    color: #000;
+    color: var(--color-text);
 }
 
 .informacoes-extras .usuario {
     margin: var(--espacamento-texto) 0;
     width: 100%;
-    color: #000;
+    color: var(--color-text);
     font-weight: bold;
 }
 
 .icone-info {
     margin-right: calc(var(--espacamento-texto) / 3);
-    color: rgb(83, 83, 83);
+    color: var(--color-text);
     font-size: var(--fonte-grande-itens);
     
 }

@@ -11,4 +11,5 @@
 
 .logo-grande {
     font-size: var(--logo-grande);
+    color: var(--color-text);
 }

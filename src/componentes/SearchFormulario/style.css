@@ -33,16 +33,17 @@
     font-size: var(--tamanho-texto-formulario);
     text-indent: var(--tamanho-texto-formulario);
     position: absolute;
-    border: 0.1vw solid rgb(0, 0, 0);
+    border: 0.1vw solid var(--border-color);
     border-radius: 0.5em;
+    color: var(--color-text);
 }
 
 #texto-pesquisa:hover,
 #texto-pesquisa:focus,
 #texto-pesquisa:active
 {
-    background-color: rgb(207, 207, 207);
-    border-color: rgb(158, 178, 187);
+    background-color: rgba(94, 94, 94, 0.2);
+    color: var(--color-text);
 }
 
 
@@ -53,6 +54,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: var(--color-text);
 }
 
 
@@ -61,15 +63,15 @@
     margin-top: var(--espacamento-inputs);
 
     font-size: var(--tamanho-texto-formulario);
-    background-color: rgb(158, 178, 187);
     border: none;
     border-radius: 0.5em;
     cursor: pointer;
+    background-color: rgba(63, 63, 63, 0.5);
+    color: var(--color-text);
 }
 
-.formulario-busca button {
-    background-color: rgb(130, 156, 168);
-}
+
+
 
 @media(max-width: 500px) {
     .formulario-busca button {

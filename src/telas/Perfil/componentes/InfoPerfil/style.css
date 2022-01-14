@@ -18,5 +18,5 @@
 .nome-usuario {
     margin-top: var(--tamanho-fonte);
     font-size: var(--tamanho-fonte);
-    color: #000;
+    color: var(--color-text);
 }
