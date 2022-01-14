@@ -16,6 +16,14 @@ export const apiRequisicoes = {
         
     },
 
+
+    async getPerfilUsuario(perfil){
+        let urlUser = `${BASE_API}/users?q=${perfil}&per_page=1`;
+
+        return basicFetch(urlUser);
+    },
+
+
     async getRepositorioUnico(nomePerfil, nomeRepositorio){
         const urlRepo = `${BASE_API}/repositories?q=${nomePerfil}/${nomeRepositorio}&per_page=1`;
         const urlIssues = `${BASE_API}/issues?q=repo:${nomePerfil}/${nomeRepositorio}`;
