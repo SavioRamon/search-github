@@ -33,8 +33,8 @@ export default function Perfil() {
                 dispatch(perfilCreators.setLoad(true));
             }
         }());
-    }, [dispatch]);
-    
+    }, [dispatch, perfil, repositorioPerfil]);
+
     return (
         <section className="perfil">
 
