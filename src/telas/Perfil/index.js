@@ -12,8 +12,6 @@ import InfoPerfil from "./componentes/InfoPerfil";
 import RepositorioDetalhado from "./componentes/RepositorioDetalhado";
 
 
-
-
 export default function Perfil() {
 
     const { perfil, repositorioPerfil } = useParams();
@@ -25,14 +23,14 @@ export default function Perfil() {
         (function getRequisicaoUnicoRepositorio(){
 
             // setLoad false diz para o script que a requisição ainda não foi completada
-
-            // chamando creator de requisição
             dispatch(perfilCreators.setLoad(false));
 
             if(repositorioPerfil) {
+                // chamando creator de requisição
                 dispatch(perfilCreators.getRepositorio(perfil, repositorioPerfil));
+                
             } else {
-                dispatch(perfilCreators.getPerfil(perfil));
+                dispatch(perfilCreators.setLoad(true));
             }
         }());
     }, [dispatch]);

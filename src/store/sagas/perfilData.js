@@ -4,26 +4,14 @@ import { apiRequisicoes } from "../../servicos/api";
 
 import { Creators as perfilCreators } from "../ducks/perfilData";
 
-export function* getPerfil(dados) {
-    const nomePerfil = dados.payload;
 
-    const dadosPerfil = yield call(apiRequisicoes.getPerfilUsuario, nomePerfil);
+export function* getRepositorioPerfil(dados) {
+    const { nomePerfil, nomeRepositorio } = dados.payload;
 
-    if(dadosPerfil) {
-        yield put(perfilCreators.setPerfil(dadosPerfil));
-    }
-
-    yield put(perfilCreators.setLoad(true));
-}
-
-
-export function* getPerfilRepositorioUnico(dados) {
-    const { perfil, nomeRepositorio } = dados.payload;
-
-    const {dataRepo, dataIssues} = yield call(apiRequisicoes.getRepositorioUnico, perfil, nomeRepositorio);
+    const {dataRepo, dataIssues} = yield call(apiRequisicoes.getRepositorioPerfil, nomePerfil, nomeRepositorio);
 
     if(dataRepo.total_count > 0) {
-        yield put(perfilCreators.setRepositorioPerfil({dataRepo, dataIssues}));
+        yield put(perfilCreators.setRepositorio({dataRepo, dataIssues}));
     };
 
     yield put(perfilCreators.setLoad(true));

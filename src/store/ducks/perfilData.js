@@ -1,34 +1,22 @@
 export const Types = {
-    GET_PERFIL_DADOS: "GET_PERFIL_DADOS_ASYNC",
     GET_REPOSITORIO_PERFIL: "GET_REPOSITORIO_PERFIL_ASYNC",
 
-    SET_PERFIL: "SET_PERFIL",
-    SET_REPOSITORIO_UNIDADE: "SET_REPOSITORIO_UNIDADE",
+    SET_REPOSITORIO_PERFIL: "SET_REPOSITORIO_PERFIL",
     SET_LOAD: "SET_LOAD"
 }
 
 
 export const Creators = {
-    getPerfil: (nomePerfil)=>({
-        type: Types.GET_PERFIL_DADOS,
-        payload: nomePerfil
-    }),
-
-    getRepositorio: (perfil, nomeRepositorio)=>({
+    getRepositorio: (nomePerfil, nomeRepositorio)=>({
         type: Types.GET_REPOSITORIO_PERFIL,
         payload: {
-            perfil,
+            nomePerfil,
             nomeRepositorio
         }
     }),
 
-    setPerfil: (perfil)=>({
-        type: Types.SET_PERFIL,
-        payload: perfil
-    }),
-
-    setRepositorioPerfil: (repositorio)=>({
-        type: Types.SET_REPOSITORIO_UNIDADE,
+    setRepositorio: (repositorio)=>({
+        type: Types.SET_REPOSITORIO_PERFIL,
         payload: repositorio
     }),
 
@@ -39,7 +27,6 @@ export const Creators = {
 }
 
 const STATE_INICIAL = {
-    perfilDados: null,
     dataRepo: null,
     dataIssues: null,
     load: true
@@ -47,13 +34,8 @@ const STATE_INICIAL = {
 
 export default function perfilData(state=STATE_INICIAL, { type, payload }) {
     switch(type) {
-        case Types.SET_PERFIL:
-            return {
-                ...state,
-                perfilDados: payload
-            };
         
-        case Types.SET_REPOSITORIO_UNIDADE:
+        case Types.SET_REPOSITORIO_PERFIL:
             return {
                 ...state,
                 dataRepo: payload.dataRepo.items[0],
