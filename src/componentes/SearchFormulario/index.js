@@ -22,7 +22,7 @@ function SearchFormulario() {
 
     useLayoutEffect(()=>{
         searchText && setTextoBusca(searchText);
-    }, [])
+    }, [searchText])
 
     return (
         <article className="formulario-area">
