@@ -1,4 +1,4 @@
-#search-github
+# search-github
 
 ## Como começar
 
