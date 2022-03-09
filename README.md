@@ -20,6 +20,9 @@ acesse o app Clicando [aqui](https://busca-github.web.app) ou siga os passos aba
 
 ```npm start```
 
+## Funcionalidades
+
+- Buscar repositórios
 
 ## Tecnologias utilizadas
 
